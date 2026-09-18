@@ -10,7 +10,7 @@ export const Credentials = ({ certifications, achievements }) => {
   return (
     <Section id="credentials" index="05" title="Certifications & Achievements">
       <div className="grid gap-6 lg:grid-cols-5">
-        <Reveal className="card-glow rounded-2xl p-6 sm:p-8 lg:col-span-2">
+        <Reveal className="card-glow rounded-2xl p-6 sm:p-8 lg:col-span-2 lg:self-start">
           <div className="mb-5 inline-flex items-center gap-2 text-[var(--cyan)]"><BadgeCheck size={18} /><span className="eyebrow">Certifications</span></div>
           <ol className="divide-y divide-border" data-testid="certifications-list">
             {certifications.map((c, i) => (

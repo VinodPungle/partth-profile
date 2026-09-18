@@ -7,7 +7,7 @@ export const Skills = ({ skills }) => {
   const groups = filter === "all" ? skills : skills.filter((g) => g.id === filter);
 
   return (
-    <Section id="skills" index="02" title="Skills" lede="AI engineering first; the languages and platforms that make it ship." className="bg-[#0b0d15]">
+    <Section id="skills" index="02" title="Skills" lede="AI engineering first; the languages and platforms that make it ship.">
       <Reveal className="mb-8 flex flex-wrap gap-2" >
         {[{ id: "all", group: "All" }, ...skills].map((g) => (
           <button

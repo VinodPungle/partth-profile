@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowUpRight, Github, Layers } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Section, Reveal } from "./Section";
+import { ArchitectureDiagram } from "./ArchitectureDiagram";
 import { trackEvent } from "@/lib/api";
 
 const DeepDive = ({ project, open, onOpenChange }) => (
@@ -13,6 +14,7 @@ const DeepDive = ({ project, open, onOpenChange }) => (
         <DialogDescription className="text-muted-foreground">{project.oneliner}</DialogDescription>
       </DialogHeader>
       <div className="space-y-6">
+        {project.architecture && <ArchitectureDiagram architecture={project.architecture} projectId={project.id} />}
         {project.sections.map((s) => (
           <div key={s.title}>
             <h4 className="mb-2 font-display text-base font-semibold text-[var(--cyan)]">{s.title}</h4>

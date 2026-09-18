@@ -56,6 +56,16 @@ PORTFOLIO = {
                 ]},
             ],
             "role": "Solo project — architecture, backend, frontend, and infrastructure.",
+            "architecture": {
+                "caption": "Five layers, one-way dependencies. Only the bottom package may import a vendor SDK.",
+                "layers": [
+                    {"label": "Client", "nodes": [{"name": "React + TypeScript UI"}, {"name": "SSE stream: tokens + tool events"}]},
+                    {"label": "API", "nodes": [{"name": "FastAPI"}, {"name": "Correlation ID"}, {"name": "OpenTelemetry + JSON logs"}]},
+                    {"label": "Agent runtime", "nodes": [{"name": "Multi-agent orchestrator"}, {"name": "Tool loop with call budgets", "hot": True}, {"name": "Memory"}]},
+                    {"label": "Typed provider interfaces", "nodes": [{"name": "LLM"}, {"name": "Search"}, {"name": "Vector store"}, {"name": "Tools"}]},
+                    {"label": "Vendor adapters (1 package)", "nodes": [{"name": "Azure AI Foundry"}, {"name": "Managed Identity — keyless", "hot": True}, {"name": "Bicep · Docker · CI gates"}]},
+                ],
+            },
             "links": [{"label": "View on GitHub", "url": "https://github.com/VinodPungle/multi-agent-ai-platform", "kind": "github"}],
         },
         {
@@ -75,6 +85,15 @@ PORTFOLIO = {
                 ]},
             ],
             "role": "Solo project — design and implementation end to end.",
+            "architecture": {
+                "caption": "Dialogue and arithmetic never share a layer: the LLM interprets and presents; the rules engine computes.",
+                "layers": [
+                    {"label": "Input", "nodes": [{"name": "Browser text"}, {"name": "Mic → Groq Whisper transcription"}]},
+                    {"label": "API", "nodes": [{"name": "FastAPI"}, {"name": "Server-Sent Events streaming"}]},
+                    {"label": "Split", "nodes": [{"name": "LLM dialogue layer — OpenAI · Groq · OpenRouter · Gemini"}, {"name": "Deterministic rules engine — budget · EMI · debt payoff · projections", "hot": True}]},
+                    {"label": "Persistence", "nodes": [{"name": "SQLAlchemy ORM"}, {"name": "PostgreSQL / SQLite sessions"}]},
+                ],
+            },
             "links": [{"label": "View on GitHub", "url": "https://github.com/parthpungle/FinPal-Student-financial-advisor", "kind": "github"}],
         },
         {
@@ -95,6 +114,16 @@ PORTFOLIO = {
                 ]},
             ],
             "role": "Built the system for the client — pipeline, orchestration, and deployment.",
+            "architecture": {
+                "caption": "The routing graph enforces correctness: life-sciences questions cannot bypass the specialist model.",
+                "layers": [
+                    {"label": "Students", "nodes": [{"name": "bioexamprep.com"}, {"name": "IIT-JAM questions"}]},
+                    {"label": "Orchestrator", "nodes": [{"name": "LangGraph router"}, {"name": "LangSmith tracing on every call"}]},
+                    {"label": "Specialists", "nodes": [{"name": "Life-sciences specialist — mandatory for biotech", "hot": True}, {"name": "General model"}]},
+                    {"label": "Retrieval", "nodes": [{"name": "LangChain RAG"}, {"name": "gemini-embedding-001 · 768d"}, {"name": "Marathi / Hindi / English transcripts"}]},
+                    {"label": "Deployment", "nodes": [{"name": "Cloud Run + NVIDIA L4"}, {"name": "Scale-to-zero", "hot": True}, {"name": "Logs: student ID + first name only"}]},
+                ],
+            },
             "links": [
                 {"label": "Live demo — bioexamprep.com", "url": "https://www.bioexamprep.com/", "kind": "demo"},
                 {"label": "View on GitHub", "url": "https://github.com/VinodPungle/coaching-academy", "kind": "github"},

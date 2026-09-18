@@ -65,7 +65,7 @@ export const Hero = ({ profile }) => {
   const words = profile.name.split(" ");
   let idx = 0;
   return (
-    <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16" aria-label="Introduction">
+    <section id="top" className="relative flex min-h-[92vh] items-center overflow-hidden pt-28 pb-10" aria-label="Introduction">
       <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 20%, rgba(0,229,255,0.12) 0%, rgba(255,87,34,0.08) 35%, transparent 70%)" }} />
       <ParticleMesh />
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-8 lg:grid-cols-[1.35fr_1fr] lg:items-center lg:px-16">

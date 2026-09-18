@@ -3,7 +3,7 @@ import { Section, Reveal } from "./Section";
 import { trackEvent } from "@/lib/api";
 
 export const MoreProjects = ({ projects }) => (
-  <Section id="more-projects" index="04" title="More Projects" className="bg-[#0b0d15]">
+  <Section id="more-projects" index="04" title="More Projects">
     <div className="grid gap-6 md:grid-cols-2">
       {projects.map((p, i) => (
         <Reveal key={p.id} delay={i * 0.06}>
