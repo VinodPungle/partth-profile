@@ -42,6 +42,12 @@ static files (index.html, css/, js/, assets/, robots, sitemap, .nojekyll) were r
 - Profile photo (2026-06): user-supplied portrait cropped to 720x720 → `public/assets/profile.jpg`;
   hero shows a gradient-ring portrait card above the terminal on desktop and a 72px circular
   avatar on mobile. `profile.photo_url` in seed_data.
+- Spacing fix (2026-06, user bug): removed alternating section backgrounds (#0b0d15 bands) and
+  marquee border/bg; section padding py-10 lg:py-14, header mb-8 lg:mb-10, hero min-h-[92vh].
+  Verified iteration_2: uniform bg, 108px gap between sections.
+- Architecture diagrams (2026-06): `featured_projects[].architecture` {caption, layers[{label,
+  nodes[{name, hot}]}]} in seed_data; rendered by `ArchitectureDiagram.jsx` at the top of each
+  Engineering-detail dialog (ember = key decision). Verified iteration_2 (9/9 backend, all UI).
 - Email alerts (2026-06): `backend/email_service.py` uses Emergent managed email
   (EMERGENT_EMAIL_KEY, EMAIL_FROM_NAME="Parth Pungle Portfolio", OWNER_EMAIL=parthpungle25@gmail.com,
   base URL constant). POST /api/contact fires a BackgroundTask that emails the owner a templated
@@ -51,11 +57,10 @@ static files (index.html, css/, js/, assets/, robots, sitemap, .nojekyll) were r
 
 ## Known gaps / user-supplied content pending
 - CloudSnip: Parth's specific role not stated (description says "team project").
-- Featured project screenshots / architecture diagrams: none supplied.
+- Featured project screenshots: none supplied (diagrams are built in).
 - Certification verification links (Credly etc.): none supplied.
 - Contact inbox (GET /api/contact) is unauthenticated — fine for now; add owner auth if exposed.
 
 ## Backlog
 - P1: Owner inbox page (/inbox) to read contact messages + stats, behind a simple password.
 - P1: CloudSnip role text; cert verification links.
-- P2: Project screenshots/diagrams in the detail dialogs.

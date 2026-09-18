@@ -42,6 +42,32 @@ class TestPortfolio:
         r = session.get(f"{API}/portfolio", timeout=15)
         assert not re.search(r"vin\s*chat", r.text, re.IGNORECASE), "Vin Chat found in portfolio!"
 
+    def test_featured_projects_architecture(self, session):
+        d = session.get(f"{API}/portfolio", timeout=15).json()
+        expected_layers = {"multi-agent": 5, "finpal": 4, "tutor": 5}
+        for p in d["featured_projects"]:
+            assert "architecture" in p, f"Missing architecture in {p['id']}"
+            arch = p["architecture"]
+            assert "caption" in arch and isinstance(arch["caption"], str) and arch["caption"]
+            assert "layers" in arch and len(arch["layers"]) == expected_layers[p["id"]]
+            for layer in arch["layers"]:
+                assert "label" in layer and "nodes" in layer
+                for n in layer["nodes"]:
+                    assert "name" in n
+        # spot check hot nodes and layer labels
+        ma = next(p for p in d["featured_projects"] if p["id"] == "multi-agent")
+        labels = [l["label"] for l in ma["architecture"]["layers"]]
+        assert labels == ["Client", "API", "Agent runtime", "Typed provider interfaces", "Vendor adapters (1 package)"]
+        assert any(n.get("hot") and n["name"] == "Tool loop with call budgets" for l in ma["architecture"]["layers"] for n in l["nodes"])
+        fp = next(p for p in d["featured_projects"] if p["id"] == "finpal")
+        split = next(l for l in fp["architecture"]["layers"] if l["label"] == "Split")
+        assert any(n.get("hot") and "Deterministic rules engine" in n["name"] for n in split["nodes"])
+        tu = next(p for p in d["featured_projects"] if p["id"] == "tutor")
+        assert any(n.get("hot") and n["name"] == "Life-sciences specialist — mandatory for biotech"
+                   for l in tu["architecture"]["layers"] for n in l["nodes"])
+
+
+
 
 # ---------- Contact ----------
 class TestContact:
