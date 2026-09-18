@@ -61,7 +61,7 @@
     "zod": "3.24.4"
   },
   "scripts": {
-    "start": "python3 -m http.server 3000 --directory /app",
+    "start": "craco start",
     "build": "craco build",
     "test": "craco test"
   },

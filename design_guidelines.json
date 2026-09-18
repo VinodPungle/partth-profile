@@ -1,0 +1,141 @@
+{
+  "project_info": {
+    "name": "Parth Vinod Pungle - Applied AI Engineer Portfolio",
+    "persona": "B.Tech CS (AI) student at Manipal Institute of Technology Bengaluru (2024–2028, CGPA 8.1)",
+    "target_audience": "Recruiters (30s scan) & SWE/AI Engineers (expandable architecture/engineering deep dives)",
+    "goal": "Summer 2027 SWE & AI/ML Internships asset. High impact Awwwards-level interactive portfolio with kinetic typography, glowing agentic mesh background, real DB-backed contact form, expandable engineering modals/drawers, and active section tracking."
+  },
+  "design_archetype": {
+    "theme": "Dark Tactical Cyber-Kinetic (Archetype 7 + Performance Pro)",
+    "vibes": ["Architectural Precision", "Kinetic Typography", "Agentic Intelligence", "Deep Void Charcoal", "Ember & Cyan Fusion"],
+    "font_strategy": {
+      "headline_font": "Outfit / Space Grotesk / Cabinet Grotesk (Display Sans with raw energy)",
+      "body_font": "Plus Jakarta Sans / Inter",
+      "mono_font": "JetBrains Mono (for code snippets, metrics, system status, API payloads)",
+      "google_fonts_import": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    }
+  },
+  "color_palette": {
+    "background": {
+      "main": "#090A0F",
+      "card": "#12141F",
+      "card_hover": "#1A1D2D",
+      "border": "#22273A",
+      "glass": "rgba(18, 20, 31, 0.75)"
+    },
+    "text": {
+      "primary": "#F3F4F6",
+      "secondary": "#9CA3AF",
+      "muted": "#6B7280",
+      "accent_ember": "#FF5722",
+      "accent_cyan": "#00E5FF",
+      "accent_emerald": "#10B981"
+    },
+    "gradients": {
+      "hero_glow": "radial-gradient(circle at 50% 20%, rgba(0, 229, 255, 0.12) 0%, rgba(255, 87, 34, 0.08) 35%, transparent 70%)",
+      "card_border": "linear-gradient(135deg, rgba(0,229,255,0.3) 0%, rgba(255,87,34,0.3) 100%)",
+      "text_gradient": "linear-gradient(135deg, #FFFFFF 0%, #00E5FF 50%, #FF5722 100%)"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto",
+    "section_gap": "py-20 lg:py-28",
+    "card_padding": "p-6 sm:p-8",
+    "border_radius": "rounded-2xl"
+  },
+  "key_sections": [
+    {
+      "id": "nav",
+      "title": "Sticky Kinetic Header",
+      "spec": "Floating glass pill (backdrop-blur-xl bg-slate-950/70 border border-slate-800/80 z-50). Contains: Logo ('PVP.AI'), links to [About, Skills, Projects, Certifications, Contact], active section highlight via Framer Motion layoutId, Availability Status Pill ('🟢 Available Summer 2027'), and 'Download Resume' PDF CTA button."
+    },
+    {
+      "id": "hero",
+      "title": "Hero Section",
+      "spec": "Hero with live agentic particle mesh (Canvas/Framer Motion). Headline: 'Parth Vinod Pungle' with gradient text & kinetic line animation. Sub-headline: 'Applied AI Engineer | LLM Systems & Agentic Orchestration'. Live terminal widget showing simulated system status & CGPA 8.1 at MIT Bengaluru. CTAs: 'Explore Architecture' (scrolls to projects) & 'Get in Touch'. Quick contact badge links (GitHub, LinkedIn, Email, Phone)."
+    },
+    {
+      "id": "about",
+      "title": "About & Education",
+      "spec": "Bento style grid card. Highlights B.Tech Computer Science (Artificial Intelligence) at Manipal Institute of Technology Bengaluru (2024-2028, CGPA: 8.1/10). Core focus: Multi-agent systems, RAG pipelines, fine-tuning LLMs, Azure/GCP AI infrastructure."
+    },
+    {
+      "id": "skills",
+      "title": "Skills Matrix (AI First)",
+      "spec": "Interactive filterable or categorised skill chips with proficiency indicators and tag highlights. Categories: 1. AI & LLM Systems (LangChain, LlamaIndex, OpenAI API, Azure OpenAI, CrewAI, AutoGen, RAG, VectorDBs), 2. Core SWE & Backend (Python, FastApi, Node.js, REST APIs, PostgreSQL, MongoDB, Redis), 3. Cloud & DevOps (Azure, GCP, Docker, Git, CI/CD), 4. Frontend & Tools (React, Tailwind CSS, TypeScript, Framer Motion)."
+    },
+    {
+      "id": "featured_projects",
+      "title": "3 Featured Projects (Expandable Depth)",
+      "projects": [
+        {
+          "title": "Autonomous Multi-Agent AI Platform",
+          "tagline": "Orchestrated collaborative LLM agent workflows for complex problem decomposition and multi-tool execution.",
+          "stack": ["Python", "CrewAI", "FastAPI", "Azure OpenAI", "Qdrant", "React"],
+          "metrics": "Reduced multi-step task resolution latency by 42%",
+          "deep_dive": "Architected hierarchical DAG execution engine for sub-agents with dynamic fallback mechanisms and stateful memory persistence."
+        },
+        {
+          "title": "FinPal - Agentic Financial Advisor",
+          "tagline": "Real-time personal finance intelligence engine leveraging RAG over market data and transaction telemetry.",
+          "stack": ["LangChain", "Python", "FastAPI", "Pinecone", "GPT-4o", "Tailwind"],
+          "metrics": "Sub-800ms query latency across 100k+ embedded documents",
+          "deep_dive": "Hybrid keyword-dense & vector semantic search with re-ranking (Cohere) to eliminate financial hallucinations."
+        },
+        {
+          "title": "Interactive AI Virtual Tutor",
+          "tagline": "Live conversational learning assistant with real-time code execution, step-by-step reasoning & instant feedback.",
+          "stack": ["React", "FastAPI", "WebSocket", "OpenAI Realtime", "Docker Sandbox"],
+          "metrics": "Tested with 200+ STEM queries with step-by-step chain of thought",
+          "deep_dive": "Integrated live interactive sandbox playground mode right in the modal to test prompt responses live!"
+        }
+      ]
+    },
+    {
+      "id": "more_projects",
+      "title": "More Projects Grid (4 Cards)",
+      "items": [
+        "Medical RAG Diagnostician (Clinical trial document QA with Llama-3)",
+        "Smart Vision Inspector (OpenCV + YOLO real-time edge defect detection)",
+        "Automated Code Review Bot (GitHub Action PR analyzer powered by Claude 3.5)",
+        "GCP Multi-Modal Search Engine (Vertex AI + Embeddings pipeline)"
+      ]
+    },
+    {
+      "id": "certifications",
+      "title": "Certifications & Achievements Lightbox",
+      "certifications": [
+        "Microsoft Certified: Azure AI Fundamentals (AI-900)",
+        "Google Cloud Skill Boost: Generative AI Leader",
+        "DeepLearning.AI: LangChain for LLM Application Development"
+      ],
+      "achievement": "TechSolstice Innovation Hackathon Certificate & Top AI Solution Award. Includes click-to-open certificate modal lightbox with full verification detail."
+    },
+    {
+      "id": "contact",
+      "title": "DB-Backed Contact Form & Direct Links",
+      "spec": "Form with Name, Email, Subject, Message inputs, interactive validation, submit loading state, and toast notification (Sonner). Endpoint submits to backend API `/api/contact` which persists to MongoDB/Database. Side card contains direct email, phone, location (Bengaluru, India), and social links."
+    },
+    {
+      "id": "footer",
+      "title": "Footer",
+      "spec": "Large kinetic signature ('PARTH VINOD PUNGLE'), copyright notice, back to top smooth button, and live local time in Bengaluru (IST)."
+    }
+  ],
+  "image_urls": {
+    "hero_network": "https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHxfYXJ0aWZpY2lhbCUyMGludGVsbGlnZW5jZSUyMG5ldHdvcms&q=85",
+    "workspace_dark": "https://images.pexels.com/photos/16027812/pexels-photo-16027812.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "neural_glow": "https://images.pexels.com/photos/17485657/pexels-photo-17485657.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "network_mesh": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  },
+  "instructions_to_main_agent": [
+    "Inject Google Fonts (Outfit, Plus Jakarta Sans, JetBrains Mono) into public/index.html or src/index.css.",
+    "Implement smooth scrolling via CSS scroll-behavior or framer-motion scroll handlers.",
+    "Use standard Lucide icons for all UI iconography. NEVER use AI emojis for icons.",
+    "Implement sticky header with active section tracking using IntersectionObserver or scroll position.",
+    "Add 'data-testid' to ALL interactive elements (nav items, CTAs, filter chips, project modal triggers, form inputs, submit buttons).",
+    "Connect the contact form in React to post to `${BACKEND_URL}/api/contact` using axios and display a Sonner toast on success or error.",
+    "Provide interactive modals or expandable accordion panels for the 3 featured projects to reveal full system architecture, prompt flows, and benchmarks.",
+    "Provide a click-to-view Lightbox modal for the TechSolstice Certificate in the Achievements section."
+  ]
+}
