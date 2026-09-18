@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, BackgroundTasks
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -15,6 +15,8 @@ from seed_data import PORTFOLIO
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
+
+from email_service import notify_owner_of_contact  # noqa: E402
 
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
@@ -71,10 +73,11 @@ async def get_portfolio():
 
 
 @api_router.post("/contact", response_model=ContactMessage, status_code=201)
-async def create_contact(payload: ContactCreate):
+async def create_contact(payload: ContactCreate, background: BackgroundTasks):
     msg = ContactMessage(**payload.model_dump())
     await db.contact_messages.insert_one(msg.model_dump())
     logger.info("New contact message from %s", msg.email)
+    background.add_task(notify_owner_of_contact, msg.model_dump())
     return msg
 
 

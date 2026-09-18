@@ -39,6 +39,13 @@ static files (index.html, css/, js/, assets/, robots, sitemap, .nojekyll) were r
   Certifications (AI-900 first) + TechSolstice certificate lightbox; Contact form (client + server
   validation, sonner toast, saved to Mongo); footer with kinetic signature + live IST clock.
 - Click analytics events: resume_download, project_link, deep_dive_open.
+- Profile photo (2026-06): user-supplied portrait cropped to 720x720 → `public/assets/profile.jpg`;
+  hero shows a gradient-ring portrait card above the terminal on desktop and a 72px circular
+  avatar on mobile. `profile.photo_url` in seed_data.
+- Email alerts (2026-06): `backend/email_service.py` uses Emergent managed email
+  (EMERGENT_EMAIL_KEY, EMAIL_FROM_NAME="Parth Pungle Portfolio", OWNER_EMAIL=parthpungle25@gmail.com,
+  base URL constant). POST /api/contact fires a BackgroundTask that emails the owner a templated
+  alert (guardrail gate applied); send failures only log, never fail the form. Verified 202 Accepted.
 - Tested: testing agent iteration_1 — backend 8/8, frontend 14/14 pass; no horizontal overflow
   at 360px; no "Vin Chat" anywhere.
 
@@ -46,11 +53,9 @@ static files (index.html, css/, js/, assets/, robots, sitemap, .nojekyll) were r
 - CloudSnip: Parth's specific role not stated (description says "team project").
 - Featured project screenshots / architecture diagrams: none supplied.
 - Certification verification links (Credly etc.): none supplied.
-- Profile photo: none supplied.
 - Contact inbox (GET /api/contact) is unauthenticated — fine for now; add owner auth if exposed.
 
 ## Backlog
 - P1: Owner inbox page (/inbox) to read contact messages + stats, behind a simple password.
 - P1: CloudSnip role text; cert verification links.
-- P2: Project screenshots/diagrams in the detail dialogs; profile photo in hero.
-- P2: Email notification on new contact message (Resend).
+- P2: Project screenshots/diagrams in the detail dialogs.

@@ -13,6 +13,7 @@ PORTFOLIO = {
         "linkedin": "https://linkedin.com/in/parth-pungle",
         "github": "https://github.com/parthpungle",
         "resume_url": "/assets/resume.pdf",
+        "photo_url": "/assets/profile.jpg",
         "about": [
             "I'm a third-year computer science student specializing in artificial intelligence. Most of my work sits at the applied end of AI engineering: taking language models beyond a chat window and into systems with orchestration, retrieval, guardrails, and observability — and shipping them on real cloud infrastructure.",
             "What I care about is the engineering judgment around the model: when to let an LLM decide and when to force a deterministic path, how to keep providers swappable, and how to make an agent's behaviour visible and debuggable rather than magical.",
