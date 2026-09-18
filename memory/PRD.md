@@ -5,9 +5,9 @@ Single-page personal portfolio for Parth Vinod Pungle (B.Tech CS-AI, MIT Bengalu
 CGPA 8.1). Positioning: applied AI engineering (LLM apps, agentic/multi-agent systems, RAG,
 Azure/GCP). Job-seeking asset for recruiters (30–45s scan) and engineers (expandable depth).
 
-**2026-06 pivot (user):** "Rebuild this website using emergent's own way without any constraints.
-No constraints on using database or any kind of front end technologies and tools." → the earlier
-plain-static GitHub Pages deliverable was replaced by a React + FastAPI + MongoDB app. Old root
+**2026-06 pivot (user):** "Rebuild this website without any constraints. No constraints on using
+database or any kind of front end technologies and tools." → the earlier
+plain-static GitHub Pages deliverable was replaced by a React + FastAPI app with local JSON persistence. Old root
 static files (index.html, css/, js/, assets/, robots, sitemap, .nojekyll) were removed.
 
 ## Confirmed content decisions (carry-over)
@@ -24,7 +24,7 @@ static files (index.html, css/, js/, assets/, robots, sitemap, .nojekyll) were r
   React Query. Design: "Dark Tactical Cyber-Kinetic" — #090A0F void, ember #FF5722 + cyan #00E5FF
   accents, Outfit / Plus Jakarta Sans / JetBrains Mono, glass pill nav, grain overlay.
   Components in `frontend/src/components/portfolio/`. Assets in `frontend/public/assets/`.
-- Backend: FastAPI, Motor. `seed_data.py` = content source of truth, upserted to
+- Backend: FastAPI with local JSON persistence. `seed_data.py` = content source of truth, served directly by
   `portfolio` collection (key "main") on startup (lifespan).
 - Collections: `portfolio`, `contact_messages`, `events`.
 - API: GET /api/portfolio · POST/GET /api/contact · POST /api/events · GET /api/stats.
@@ -37,7 +37,7 @@ static files (index.html, css/, js/, assets/, robots, sitemap, .nojekyll) were r
   core focus); Skills with filter buttons; 3 Featured projects with highlight tiles, stack chips,
   Engineering-detail Dialog (sections, role, links); More Projects (4 cards, CloudSnip team badge);
   Certifications (AI-900 first) + TechSolstice certificate lightbox; Contact form (client + server
-  validation, sonner toast, saved to Mongo); footer with kinetic signature + live IST clock.
+  validation, sonner toast, saved locally); footer with kinetic signature + live IST clock.
 - Click analytics events: resume_download, project_link, deep_dive_open.
 - Profile photo (2026-06): user-supplied portrait cropped to 720x720 → `public/assets/profile.jpg`;
   hero shows a gradient-ring portrait card above the terminal on desktop and a 72px circular
@@ -48,19 +48,29 @@ static files (index.html, css/, js/, assets/, robots, sitemap, .nojekyll) were r
 - Architecture diagrams (2026-06): `featured_projects[].architecture` {caption, layers[{label,
   nodes[{name, hot}]}]} in seed_data; rendered by `ArchitectureDiagram.jsx` at the top of each
   Engineering-detail dialog (ember = key decision). Verified iteration_2 (9/9 backend, all UI).
-- Email alerts (2026-06): `backend/email_service.py` uses Emergent managed email
-  (EMERGENT_EMAIL_KEY, EMAIL_FROM_NAME="Parth Pungle Portfolio", OWNER_EMAIL=parthpungle25@gmail.com,
-  base URL constant). POST /api/contact fires a BackgroundTask that emails the owner a templated
-  alert (guardrail gate applied); send failures only log, never fail the form. Verified 202 Accepted.
+- Email alerts (2026-06, REMOVED 2026-09): `backend/email_service.py` sent the owner a templated
+  alert from a POST /api/contact BackgroundTask via a hosted email API. Deleted in the 2026-09
+  static migration along with its vendor dependency; the contact form now posts to a third-party
+  form service (REACT_APP_CONTACT_ENDPOINT).
 - Tested: testing agent iteration_1 — backend 8/8, frontend 14/14 pass; no horizontal overflow
   at 360px; no "Vin Chat" anywhere.
 
 ## Known gaps / user-supplied content pending
-- CloudSnip: Parth's specific role not stated (description says "team project").
+- ~~CloudSnip: role not stated~~ — resolved 2026-09: `more_projects[].role` added (React frontend +
+  ML service / Isolation Forest anomaly detection), rendered on the More Projects card.
 - Featured project screenshots: none supplied (diagrams are built in).
 - Certification verification links (Credly etc.): none supplied.
 - Contact inbox (GET /api/contact) is unauthenticated — fine for now; add owner auth if exposed.
 
 ## Backlog
 - P1: Owner inbox page (/inbox) to read contact messages + stats, behind a simple password.
-- P1: CloudSnip role text; cert verification links.
+- P1: cert verification links. (CloudSnip role text: done 2026-09.)
+
+## Content updates (2026-09)
+- CloudSnip role recorded in `seed_data.py` and surfaced on the card via a new optional
+  `more_projects[].role` field (`MoreProjects.jsx` renders it only when present).
+- Coursework now lists the eleven key topics from the last four semesters: DSA, Operating Systems,
+  Computer Organization, Computer Networks, Data Communication, Database Management, Discrete
+  Mathematical Structures, Probability & Optimization, Artificial Intelligence, Agentic AI, Data
+  Analytics. Database Management and Agentic AI were kept at the user's request; only Systems
+  Programming was dropped from the old list.

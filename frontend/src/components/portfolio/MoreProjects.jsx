@@ -25,6 +25,11 @@ export const MoreProjects = ({ projects }) => (
               </span>
             )}
             <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+            {p.role && (
+              <p className="mt-4 rounded-xl border border-border bg-black/30 px-4 py-3 text-sm leading-relaxed text-white/90" data-testid={`mini-${p.id}-role`}>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Role · </span>{p.role}
+              </p>
+            )}
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tech stack">
               {p.stack.map((s) => <li key={s} className="chip">{s}</li>)}
             </ul>

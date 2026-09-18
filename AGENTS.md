@@ -2,47 +2,43 @@
 
 ## Project Structure & Module Organization
 
-This repository is currently a minimal profile project. The root contains
-`README.md`, which introduces the project; no application source, tests, build
-configuration, or static assets have been added yet. Keep root-level files
-limited to repository-wide documentation and configuration. As the project
-grows, use a predictable layout such as `src/` for implementation, `tests/` for
-automated tests, and `assets/` for images or other non-code files. Keep related
-modules together and avoid placing generated output under source directories.
+The React single-page application is in `frontend/`; portfolio sections live in
+`frontend/src/components/portfolio/`, reusable UI primitives in
+`frontend/src/components/ui/`, and static files in `frontend/public/assets/`.
+The FastAPI API is in `backend/`: `seed_data.py` contains portfolio copy,
+`server.py` defines routes, `storage.py` stores contact messages and events in
+local JSON, and `export_static.py` dumps the copy to
+`frontend/public/portfolio.json` for the static build. Backend tests belong in
+`backend/tests/`. Do not commit the runtime `backend/data/` directory.
 
 ## Build, Test, and Development Commands
 
-There are no build, test, lint, or local-run commands configured at present.
-Do not document or rely on a command until its supporting configuration is
-committed. When adding a toolchain, expose its common workflows through the
-package manager or project task runner and record them in `README.md`; for
-example, `npm run dev`, `npm test`, and `npm run lint` for a Node-based site.
+Run `yarn start` from `frontend/` to serve the client, `yarn build` to create a
+production build (its `prebuild` step regenerates `public/portfolio.json`), and
+`yarn test` for front-end tests. Start the API from `backend/` with
+`uvicorn server:app --reload`. Run backend tests with `python -m pytest`; use
+`-n 0` to run serially when diagnosing shared-state tests. The HTTP tests in
+`test_portfolio_api.py` need a running backend — point them at it with
+`REACT_APP_BACKEND_URL`. Configure `REACT_APP_BACKEND_URL` for the client and,
+optionally, `PORTFOLIO_DATA_PATH` for the local JSON data file.
 
 ## Coding Style & Naming Conventions
 
-Follow the conventions established by the language and formatter introduced
-with the project. Use 2-space indentation for JSON, YAML, Markdown lists, and
-typical web front-end code unless that toolchain specifies otherwise. Prefer
-descriptive, lowercase kebab-case filenames (for example,
-`profile-card.tsx`); use PascalCase for UI component names and camelCase for
-JavaScript or TypeScript variables and functions. Add a formatter and linter
-with any substantial codebase, and run them before opening a pull request.
+Use 2-space indentation for JSX, JSON, and CSS, and 4 spaces for Python.
+Use PascalCase component filenames (for example, `FeaturedProjects.jsx`),
+camelCase JavaScript symbols, and snake_case Python modules/functions. Keep
+content changes in `backend/seed_data.py`; do not duplicate them in the client.
 
 ## Testing Guidelines
 
-No test framework or coverage target exists yet. When functionality is added,
-place tests in `tests/` or next to the module using the selected framework's
-standard convention, such as `profile-card.test.tsx`. Cover user-visible
-behavior and regressions, and ensure the full test command passes locally
-before submitting changes. Document any required test setup and coverage policy
-when the framework is introduced.
+Use `test_*.py` for API and storage tests. Cover endpoint validation, contact
+persistence, and event statistics when changing backend behavior. For visual
+client changes, include the relevant front-end test where practical and verify
+desktop and mobile layouts manually.
 
 ## Commit & Pull Request Guidelines
 
-The available history contains only an initial commit, so no established commit
-format can be inferred. Write short, imperative commit subjects that describe
-one change, such as `Add profile header` or `Document local setup`. Keep commits
-focused and avoid mixing refactors with feature work. Pull requests should
-explain the change and verification performed, link relevant issues where
-applicable, and include screenshots for visual or layout changes. Update
-documentation whenever setup, commands, or user-facing behavior changes.
+Write short, imperative commit subjects, such as `Remove MongoDB persistence`.
+Keep commits focused. Pull requests should summarize behavior changes, list
+verification, link issues where applicable, and include screenshots for visual
+or layout work. Update documentation whenever setup or configuration changes.

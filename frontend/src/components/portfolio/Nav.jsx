@@ -21,7 +21,7 @@ export const Nav = ({ resumeUrl }) => {
     <header className="fixed inset-x-0 top-4 z-50 px-4" data-testid="site-nav">
       <nav aria-label="Main" className="glass mx-auto flex max-w-5xl items-center justify-between rounded-full border border-border/80 px-3 py-2 pl-5 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.8)]">
         <a href="#top" className="font-display text-base font-bold tracking-tight text-white" data-testid="nav-brand">
-          PVP<span className="text-[var(--ember)]">.</span><span className="text-[var(--cyan)]">AI</span>
+          partth<span className="text-[var(--ember)]">.</span><span className="text-[var(--cyan)]">online</span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">

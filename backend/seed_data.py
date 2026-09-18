@@ -26,7 +26,7 @@ PORTFOLIO = {
         "duration": "July 2024 – May 2028",
         "year": "3rd year",
         "cgpa": "8.1 / 10.0",
-        "coursework": ["Data Structures", "Algorithms Analysis", "Database Management", "Artificial Intelligence", "Agentic AI", "Systems Programming"],
+        "coursework": ["Data Structures & Algorithms", "Operating Systems", "Computer Organization", "Computer Networks", "Data Communication", "Database Management", "Discrete Mathematical Structures", "Probability & Optimization", "Artificial Intelligence", "Agentic AI", "Data Analytics"],
     },
     "skills": [
         {"id": "ai", "group": "AI & Machine Learning", "accent": True,
@@ -144,6 +144,7 @@ PORTFOLIO = {
          "stack": ["React", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Tailwind CSS", "Vite"],
          "url": "https://github.com/parthpungle/EduTrack_main"},
         {"id": "cloudsnip", "title": "CloudSnip — Cloud Cost Intelligence", "team": True,
+         "role": "Built the React frontend and the ML service — Isolation Forest anomaly detection over the cost telemetry.",
          "description": "Hackathon team project: real-time cost monitoring for a live GCP project — telemetry ingested every five minutes, Isolation Forest anomaly detection, automated remediation of idle VMs and orphan disks, Slack alerts, and a live Socket.IO dashboard.",
          "stack": ["TypeScript", "Express", "React", "scikit-learn", "GCP", "MongoDB"],
          "url": "https://github.com/FirezTheGreat/CloudSnip"},

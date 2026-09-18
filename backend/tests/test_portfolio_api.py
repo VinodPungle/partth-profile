@@ -1,10 +1,11 @@
 """Backend API tests for Portfolio app."""
 import os
+from pathlib import Path
 import re
 import pytest
 import requests
 
-BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://agent-portfolio-23.preview.emergentagent.com').rstrip('/')
+BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'http://127.0.0.1:8000').rstrip('/')
 API = f"{BASE_URL}/api"
 
 
@@ -114,7 +115,18 @@ class TestEvents:
 
 
 # ---------- Resume PDF ----------
+# The resume is a frontend build artifact, not an API resource. Backend and frontend no
+# longer share an origin (the static site has no backend at all), so this checks the file
+# the build ships. Set FRONTEND_URL to additionally verify it over HTTP on a running site.
 class TestStatic:
-    def test_resume_pdf_reachable(self, session):
-        r = session.get(f"{BASE_URL}/assets/resume.pdf", timeout=15)
+    def test_resume_pdf_present_in_frontend_assets(self):
+        resume = Path(__file__).resolve().parents[2] / "frontend" / "public" / "assets" / "resume.pdf"
+        assert resume.is_file(), f"Missing resume asset: {resume}"
+        assert resume.stat().st_size > 1024, "resume.pdf looks empty"
+
+    def test_resume_pdf_reachable_on_running_frontend(self, session):
+        frontend_url = os.environ.get("FRONTEND_URL")
+        if not frontend_url:
+            pytest.skip("FRONTEND_URL not set; skipping live frontend asset check")
+        r = session.get(f"{frontend_url.rstrip('/')}/assets/resume.pdf", timeout=15)
         assert r.status_code == 200

@@ -3,7 +3,7 @@
     "name": "Parth Vinod Pungle - Applied AI Engineer Portfolio",
     "persona": "B.Tech CS (AI) student at Manipal Institute of Technology Bengaluru (2024–2028, CGPA 8.1)",
     "target_audience": "Recruiters (30s scan) & SWE/AI Engineers (expandable architecture/engineering deep dives)",
-    "goal": "Summer 2027 SWE & AI/ML Internships asset. High impact Awwwards-level interactive portfolio with kinetic typography, glowing agentic mesh background, real DB-backed contact form, expandable engineering modals/drawers, and active section tracking."
+    "goal": "Summer 2027 SWE & AI/ML Internships asset. High impact Awwwards-level interactive portfolio with kinetic typography, glowing agentic mesh background, persistent contact form, expandable engineering modals/drawers, and active section tracking."
   },
   "design_archetype": {
     "theme": "Dark Tactical Cyber-Kinetic (Archetype 7 + Performance Pro)",
@@ -47,7 +47,7 @@
     {
       "id": "nav",
       "title": "Sticky Kinetic Header",
-      "spec": "Floating glass pill (backdrop-blur-xl bg-slate-950/70 border border-slate-800/80 z-50). Contains: Logo ('PVP.AI'), links to [About, Skills, Projects, Certifications, Contact], active section highlight via Framer Motion layoutId, Availability Status Pill ('🟢 Available Summer 2027'), and 'Download Resume' PDF CTA button."
+      "spec": "Floating glass pill (backdrop-blur-xl bg-slate-950/70 border border-slate-800/80 z-50). Contains: Logo ('partth.online'), links to [About, Skills, Projects, Certifications, Contact], active section highlight via Framer Motion layoutId, Availability Status Pill ('🟢 Available Summer 2027'), and 'Download Resume' PDF CTA button."
     },
     {
       "id": "hero",
@@ -113,8 +113,8 @@
     },
     {
       "id": "contact",
-      "title": "DB-Backed Contact Form & Direct Links",
-      "spec": "Form with Name, Email, Subject, Message inputs, interactive validation, submit loading state, and toast notification (Sonner). Endpoint submits to backend API `/api/contact` which persists to MongoDB/Database. Side card contains direct email, phone, location (Bengaluru, India), and social links."
+      "title": "Persistent Contact Form & Direct Links",
+      "spec": "Form with Name, Email, Subject, Message inputs, interactive validation, submit loading state, and toast notification (Sonner). Endpoint submits to backend API `/api/contact`, which persists locally as JSON. Side card contains direct email, phone, location (Bengaluru, India), and social links."
     },
     {
       "id": "footer",

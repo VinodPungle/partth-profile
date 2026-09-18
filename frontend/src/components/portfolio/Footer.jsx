@@ -18,7 +18,7 @@ export const Footer = ({ profile }) => {
           {profile.name}
         </p>
         <div className="mt-10 flex flex-col gap-6 border-t border-border/60 pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {profile.name} · Built with React, FastAPI &amp; MongoDB.</p>
+          <p>© {new Date().getFullYear()} {profile.name} · Built with React &amp; FastAPI.</p>
           <p className="font-mono text-xs" data-testid="footer-ist-clock">
             <span className="text-[var(--cyan)]">IST</span> {time} · Bengaluru
           </p>
