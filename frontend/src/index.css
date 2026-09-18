@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 228 25% 5%;
+        --foreground: 220 14% 96%;
+        --card: 230 27% 10%;
+        --card-foreground: 220 14% 96%;
+        --popover: 230 27% 10%;
+        --popover-foreground: 220 14% 96%;
+        --primary: 14 100% 57%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 231 25% 14%;
+        --secondary-foreground: 220 14% 96%;
+        --muted: 231 25% 14%;
+        --muted-foreground: 218 11% 65%;
+        --accent: 186 100% 50%;
+        --accent-foreground: 228 25% 5%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 229 26% 18%;
+        --input: 229 26% 18%;
+        --ring: 186 100% 50%;
+        --radius: 1rem;
+        --ember: #ff5722;
+        --cyan: #00e5ff;
+        --emerald: #10b981;
+    }
+    * {
+        @apply border-border;
+    }
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+    }
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+        background-color: #090a0f;
+        overflow-x: hidden;
+    }
+    ::selection {
+        background: rgba(0, 229, 255, 0.35);
+        color: #fff;
+    }
+    .font-display {
+        font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+    }
+    .font-mono {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+    }
+    .eyebrow {
+        @apply font-mono text-xs uppercase tracking-[0.25em] text-[var(--cyan)];
+    }
+    .text-gradient {
+        background: linear-gradient(135deg, #ffffff 0%, #00e5ff 55%, #ff5722 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .glass {
+        background: rgba(18, 20, 31, 0.72);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+    }
+    .grain::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.045;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .card-glow {
+        position: relative;
+        background: #12141f;
+        border: 1px solid #22273a;
+        transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-glow:hover {
+        border-color: rgba(0, 229, 255, 0.35);
+        transform: translateY(-3px);
+        box-shadow: 0 20px 60px -20px rgba(0, 229, 255, 0.25);
+    }
+    .chip {
+        @apply inline-flex items-center rounded-full border px-3 py-1 font-mono text-[11px] tracking-wide;
+        border-color: #22273a;
+        background: #0f111a;
+        color: #c5cad6;
+        transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    }
+    .chip:hover {
+        border-color: rgba(0, 229, 255, 0.5);
+        color: #fff;
+    }
+    .chip-accent {
+        border-color: rgba(255, 87, 34, 0.4);
+        background: rgba(255, 87, 34, 0.08);
+        color: #ffb59a;
+    }
+    .marquee-track {
+        animation: marquee 40s linear infinite;
+    }
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+    @keyframes pulse-dot {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+        70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    }
+    .pulse-dot {
+        animation: pulse-dot 2s ease-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .marquee-track, .pulse-dot { animation: none; }
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+    [data-debug-wrapper="true"] > * {
+        margin: inherit;
+        padding: inherit;
+        gap: inherit;
+    }
+}
